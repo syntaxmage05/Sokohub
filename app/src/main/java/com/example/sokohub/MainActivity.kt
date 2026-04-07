@@ -1,23 +1,40 @@
 package com.example.sokohub
+
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.activity.enableEdgeToEdge
-import dev.hotwire.navigation.activities.HotwireActivity
-import dev.hotwire.navigation.navigator.NavigatorConfiguration
-import dev.hotwire.navigation.util.applyDefaultImeWindowInsets
-const val baseURL = "http://10.0.2.2:3000"
-class MainActivity : HotwireActivity() {
+import android.widget.ViewFlipper
+import androidx.activity.viewModels
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import dev.hotwire.turbo.activities.TurboActivity
+import dev.hotwire.turbo.delegates.TurboActivityDelegate
+
+class MainActivity : AppCompatActivity(), TurboActivity {
+    override lateinit var delegate: TurboActivityDelegate
+    lateinit var tabBar: BottomNavigationView
+    private lateinit var tabSwitcher: ViewFlipper
+    private val tabsViewModel: TabsViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        findViewById<View>(R.id.main).applyDefaultImeWindowInsets()
+        configureTurboDelegates()
+        configureTabs()
     }
-    override fun navigatorConfigurations() = listOf(
-        NavigatorConfiguration(
-            name = "main",
-            startLocation = "$baseURL/hikes",
-            navigatorHostId = R.id.main
-        )
-    )
+    private fun configureTurboDelegates() {
+        delegate =
+            TurboActivityDelegate(this, tabsViewModel.tabs.first().id)
+        tabsViewModel.tabs.forEach {
+            delegate.registerNavHostFragment(it.id)
+        }
+    }
+    private fun configureTabs() {
+        tabSwitcher = findViewById(R.id.tabSwitcher)
+        tabBar = findViewById(R.id.tabBar)
+        tabBar.setOnItemSelectedListener {
+            tabSwitcher.displayedChild =
+                tabsViewModel.indexedTabForId(it.itemId)!!.index
+            delegate.currentNavHostFragmentId = it.itemId
+            delegate.refresh(false)
+            return@setOnItemSelectedListener true
+        }
+    }
 }

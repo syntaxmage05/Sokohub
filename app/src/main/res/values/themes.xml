@@ -1,9 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Sokohub" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Base theme (actual styling lives here) -->
+    <style name="Base.Theme.Sokohub"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/black</item>
+
+        <!-- Secondary colors -->
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Background -->
+        <item name="android:colorBackground">@color/white</item>
+
+        <!-- Status bar -->
+        <item
+            name="android:statusBarColor"
+            tools:targetApi="l">
+            ?attr/colorPrimary
+        </item>
+
+        <!-- Toolbar -->
+        <item name="toolbarStyle">@style/Widget.Sokohub.Toolbar</item>
+
     </style>
 
-    <style name="Theme.Sokohub" parent="Base.Theme.Sokohub" />
+    <!-- App theme (this is what Manifest uses) -->
+    <style name="Theme.Sokohub"
+        parent="Base.Theme.Sokohub" />
+
+    <!-- Toolbar style -->
+    <style name="Widget.Sokohub.Toolbar"
+        parent="Widget.Material3.Toolbar">
+
+        <item name="android:background">@color/white</item>
+        <item name="titleTextColor">@color/black</item>
+        <item name="subtitleTextColor">@color/black</item>
+        <item name="elevation">12dp</item>
+
+    </style>
+
 </resources>
