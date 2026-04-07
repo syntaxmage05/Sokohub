@@ -19,7 +19,9 @@ class SessionNavHostFragment : TurboSessionNavHostFragment() {
     override val registeredFragments:
             List<KClass<out Fragment>>
         get() = listOf(
-            WebFragment::class
+            WebFragment::class,
+            ModalWebFragment::class,
+            TabbedWebFragment::class
         )
     override fun onCreate(savedInstanceState: Bundle?) {
         sessionName = "tab_$tag"
