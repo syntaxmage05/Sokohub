@@ -15,3 +15,7 @@ fun TurboWebView.attachWebBridge(context: Context) {
     }
     runJavaScript(script)
 }
+
+fun TurboWebView.click(elementId: Int) {
+    runJavaScript("window.webBridge.nativeActions.click($elementId)")
+}
