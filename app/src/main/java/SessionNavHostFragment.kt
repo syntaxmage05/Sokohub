@@ -1,5 +1,6 @@
 package com.example.sokohub
 
+import WebBridgeMessageHandler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import dev.hotwire.turbo.config.TurboPathConfiguration
@@ -33,6 +34,10 @@ class SessionNavHostFragment : TurboSessionNavHostFragment() {
         super.onSessionCreated()
         session.webView.settings.userAgentString =
             "Sokohub Turbo Native Android"
+
+        session.webView.addJavascriptInterface(
+            WebBridgeMessageHandler(this), "messageHandler"
+        )
     }
     override val pathConfigurationLocation:
             TurboPathConfiguration.Location

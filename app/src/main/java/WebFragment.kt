@@ -12,4 +12,9 @@ open class WebFragment :
             else -> super.onVisitErrorReceived(location, errorCode)
         }
     }
+
+    override fun onColdBootPageCompleted(location: String) {
+        super.onColdBootPageCompleted(location)
+        session.webView.attachWebBridge(requireContext())
+    }
     }
