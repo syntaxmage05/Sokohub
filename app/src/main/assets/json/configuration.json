@@ -15,7 +15,7 @@
     },
     {
       "patterns": [
-        "^$", "^/$", "^/profile$"
+        "^$", "^/$", "^/profile$", "^/users/password_resets/*"
       ],
       "properties": {
         "uri": "sokohub://fragment/web/tab",

@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.hotwire.turbo.activities.TurboActivity
 import dev.hotwire.turbo.delegates.TurboActivityDelegate
+import android.content.Intent
 
 class MainActivity : AppCompatActivity(), TurboActivity {
     override lateinit var delegate: TurboActivityDelegate
@@ -19,6 +20,19 @@ class MainActivity : AppCompatActivity(), TurboActivity {
         configureTurboDelegates()
         configureTabs()
     }
+
+    override fun onResume() {
+        super.onResume()
+        navigateDeepLink()
+    }
+
+    private fun navigateDeepLink() {
+        if(intent.action == Intent.ACTION_VIEW
+            && intent.data != null) {
+            delegate.navigate(intent.data.toString())
+        }
+    }
+
     private fun configureTurboDelegates() {
         delegate =
             TurboActivityDelegate(this, tabsViewModel.tabs.first().id)
