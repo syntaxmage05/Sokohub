@@ -35,6 +35,14 @@
         "context": "modal",
         "uri": "sokohub://fragment/web/modal"
       }
+    },
+    {
+      "patterns": [
+        ".+\\.(?:bmp|gif|heic|jpg|jpeg|png|svg|webp)"
+      ],
+      "properties": {
+        "uri": "sokohub://fragment/image_viewer"
+      }
     }
   ]
 }

@@ -22,7 +22,8 @@ class SessionNavHostFragment : TurboSessionNavHostFragment() {
         get() = listOf(
             WebFragment::class,
             ModalWebFragment::class,
-            TabbedWebFragment::class
+            TabbedWebFragment::class,
+            ImageViewerFragment::class
         )
     override fun onCreate(savedInstanceState: Bundle?) {
         sessionName = "tab_$tag"

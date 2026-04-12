@@ -1,5 +1,8 @@
 package com.example.sokohub
 
+import android.net.Uri
+import androidx.browser.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsIntent.SHARE_STATE_ON
 import androidx.navigation.NavOptions
 import androidx.navigation.navOptions
 import dev.hotwire.turbo.config.TurboPathConfigurationProperties
@@ -22,7 +25,7 @@ interface NavDestination: TurboNavDestination {
             }
 
             isExternal(newLocation) -> {
-                //TODO: open in browser
+                launchExternalLocation(newLocation)
                 false
             }
             isPathDirective(newLocation) -> {
@@ -31,6 +34,17 @@ interface NavDestination: TurboNavDestination {
             }
             else -> true
         }
+    }
+
+    private fun launchExternalLocation(location: String) {
+        val context = fragment.context ?: return
+
+        CustomTabsIntent.Builder()
+            .setShowTitle(true)
+            .setShareState(SHARE_STATE_ON)
+            .setUrlBarHidingEnabled(false)
+            .build()
+            .launchUrl(context, Uri.parse(location))
     }
 
     fun switchToTabForUrl(url: String) {
