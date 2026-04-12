@@ -9,6 +9,6 @@ class Api {
         val rootUrl = "$baseUrl/"
         val profileUrl = "$baseUrl/profile"
         val loginUrl = "$baseUrl/login"
-
+        val myAdsUrl = "$baseUrl/my_listings"
     }
 }

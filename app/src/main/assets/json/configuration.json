@@ -4,9 +4,7 @@
   },
   "rules": [
     {
-      "patterns": [
-        ".*"
-      ],
+      "patterns": ["^.*"],
       "properties": {
         "context": "default",
         "uri": "sokohub://fragment/web",
@@ -15,7 +13,10 @@
     },
     {
       "patterns": [
-        "^$", "^/$", "^/profile$", "^/users/password_resets/*"
+        "^$",
+        "^/$",
+        "^/profile$",
+        "^/my_listings$"
       ],
       "properties": {
         "uri": "sokohub://fragment/web/tab",
@@ -24,7 +25,11 @@
     },
     {
       "patterns": [
-        "^/login$", "^/sign_up$"
+        "^/login$",
+        "^/sign_up$",
+        "^/users/password_resets/.*",
+        "^/new$",
+        "^/edit$"
       ],
       "properties": {
         "context": "modal",
