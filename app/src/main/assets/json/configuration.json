@@ -16,7 +16,8 @@
         "^$",
         "^/$",
         "^/profile$",
-        "^/my_listings$"
+        "^/my_listings$",
+        "^/saved_listings$"
       ],
       "properties": {
         "uri": "sokohub://fragment/web/tab",
