@@ -17,7 +17,8 @@
         "^/$",
         "^/profile$",
         "^/my_listings$",
-        "^/saved_listings$"
+        "^/saved_listings$",
+        "^/conversations$"
       ],
       "properties": {
         "uri": "sokohub://fragment/web/tab",
@@ -30,7 +31,8 @@
         "^/sign_up$",
         "^/users/password_resets/.*",
         "^/new$",
-        "^/edit$"
+        "^/edit$",
+        "/contact$"
       ],
       "properties": {
         "context": "modal",

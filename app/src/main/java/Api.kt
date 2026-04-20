@@ -11,5 +11,6 @@ class Api {
         val loginUrl = "$baseUrl/login"
         val myAdsUrl = "$baseUrl/my_listings"
         val savedAdsUrl = "$baseUrl/saved_listings"
+        val messagesUrl = "$baseUrl/conversations"
     }
 }
